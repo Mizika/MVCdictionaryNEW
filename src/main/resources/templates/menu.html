@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <style>
+            a.button {
+                position: relative;
+                display: inline-block;
+                font-size: 90%;
+                font-weight: 700;
+                color: rgb(255,255,255);
+                text-decoration: none;
+                text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+                padding: .5em 1em;
+                outline: none;
+                border-radius: 3px;
+                background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+                box-shadow:
+                        0 1px rgba(255,255,255,.2) inset,
+                        0 3px 5px rgba(0,1,6,.5),
+                        0 0 1px 1px rgba(0,1,6,.2);
+                transition: .2s ease-in-out;
+            }
+        </style>
+    </head>
+    <body bgcolor="#FAEBD7">
+    <div style="text-align: center;">
+        <h2><strong>Меню:</strong></h2>
+        <p><a href="/" class="button">Вернуться к выбору словарей</a></p>
+        <p><a href="/showAll" class="button">Показать все записи в словаре</a></p>
+        <p><a href="/keyForm" class="button">Поиск по ключу</a></p>
+        <p><a href="/removeKeyForm" class="button">Удаление записи</a></p>
+        <p><a href="/addKeyForm" class="button">Добавление записи</a></p>
+    </div>
+    </body>
+</html>
