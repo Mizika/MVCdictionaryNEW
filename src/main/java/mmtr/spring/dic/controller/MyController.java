@@ -1,7 +1,6 @@
 package mmtr.spring.dic.controller;
 
-import io.swagger.annotations.Api;
-import mmtr.spring.dic.service.MyServices;
+import mmtr.spring.dic.service.MyServicesTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +16,10 @@ public class MyController {
     private String keyValue;
     private String value;
 
-    private MyServices myServices;
+    private MyServicesTest myServices;
 
     @Autowired
-    public MyController(MyServices myServices) {
+    public MyController(MyServicesTest myServices) {
         this.myServices = myServices;
     }
 
@@ -57,37 +56,37 @@ public class MyController {
         return "searchByKey";
     }
 
-    @GetMapping("/removeKeyForm")
-    public String getRemoveKey(){
-        return "removeKeyForm";
-    }
-
-    @PostMapping("/removeValue")
-    public String removeFromFileByKey(@RequestParam("keyValue") String keyValue, Model model) throws IOException {
-        this.keyValue = keyValue;
-        model.addAttribute("removeV", myServices.removeFromFile(dictionaryName, keyValue));
-        return "removeValue";
-    }
-
-    @GetMapping("/addKeyForm")
-    public String getAddKey(){
-        switch (dictionaryName){
-            case "first.txt":
-                return "addKeyForm";
-            case "second.txt":
-                return "addkeyFormSecond";
-        }
-        return null;
-
-    }
-
-    @PostMapping("/addValue")
-    public String addValue(@RequestParam String keyValue, String value, Model model) throws IOException {
-        this.keyValue = keyValue;
-        this.value = value;
-        model.addAttribute("addV", myServices.addValue(dictionaryName, keyValue, value));
-        return "addValue";
-    }
+//    @GetMapping("/removeKeyForm")
+//    public String getRemoveKey(){
+//        return "removeKeyForm";
+//    }
+//
+//    @PostMapping("/removeValue")
+//    public String removeFromFileByKey(@RequestParam("keyValue") String keyValue, Model model) throws IOException {
+//        this.keyValue = keyValue;
+//        model.addAttribute("removeV", myServices.removeFromFile(dictionaryName, keyValue));
+//        return "removeValue";
+//    }
+//
+//    @GetMapping("/addKeyForm")
+//    public String getAddKey(){
+//        switch (dictionaryName){
+//            case "first.txt":
+//                return "addKeyForm";
+//            case "second.txt":
+//                return "addkeyFormSecond";
+//        }
+//        return null;
+//
+//    }
+//
+//    @PostMapping("/addValue")
+//    public String addValue(@RequestParam String keyValue, String value, Model model) throws IOException {
+//        this.keyValue = keyValue;
+//        this.value = value;
+//        model.addAttribute("addV", myServices.addValue(dictionaryName, keyValue, value));
+//        return "addValue";
+//    }
 
 
 }

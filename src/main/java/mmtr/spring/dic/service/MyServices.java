@@ -1,6 +1,6 @@
 package mmtr.spring.dic.service;
 
-import mmtr.spring.dic.repository.*;
+import mmtr.spring.dic.repository.IAllAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
