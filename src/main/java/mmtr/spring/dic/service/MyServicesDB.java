@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class MyServicesTest implements IAllActionDB {
+public class MyServicesDB implements IAllActionDB {
     private IAllActionDB actionDB;
 
     @Autowired
-    public MyServicesTest(IAllActionDB actionDB) {
+    public MyServicesDB(IAllActionDB actionDB) {
         this.actionDB = actionDB;
     }
 

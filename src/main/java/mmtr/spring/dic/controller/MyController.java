@@ -1,6 +1,6 @@
 package mmtr.spring.dic.controller;
 
-import mmtr.spring.dic.service.MyServicesTest;
+import mmtr.spring.dic.service.MyServicesDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +16,10 @@ public class MyController {
     private String keyValue;
     private String value;
 
-    private MyServicesTest myServices;
+    private MyServicesDB myServices;
 
     @Autowired
-    public MyController(MyServicesTest myServices) {
+    public MyController(MyServicesDB myServices) {
         this.myServices = myServices;
     }
 
