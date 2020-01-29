@@ -1,9 +1,11 @@
 package mmtr.spring.dic.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "first")
+@Table(name = "first" )
 public class FirstDictionary {
 
     @Id
@@ -11,9 +13,11 @@ public class FirstDictionary {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "key")
+    @NotBlank
+    @Column(name = "key", unique=true)
     private String key;
 
+    @Pattern(regexp = "\\D{4}")
     @Column(name = "value")
     private String value;
 

@@ -8,7 +8,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
 import java.util.Collections;
 
 @SpringBootApplication
@@ -17,7 +16,7 @@ public class app {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(app.class);
         app.setDefaultProperties(Collections
-                .singletonMap("server.port", "1900"));
+                .singletonMap("server.port", "1901"));
         app.run(args);
     }
 

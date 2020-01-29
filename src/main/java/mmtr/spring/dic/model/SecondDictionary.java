@@ -1,6 +1,7 @@
 package mmtr.spring.dic.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "second")
@@ -10,9 +11,11 @@ public class SecondDictionary {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "key")
     private String key;
 
+    @Pattern(regexp = "\\d{5}")
     @Column(name = "value")
     private String value;
 

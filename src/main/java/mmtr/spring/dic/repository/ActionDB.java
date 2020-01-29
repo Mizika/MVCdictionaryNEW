@@ -1,5 +1,7 @@
 package mmtr.spring.dic.repository;
 
+import mmtr.spring.dic.model.FirstDictionary;
+import mmtr.spring.dic.model.SecondDictionary;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -77,6 +79,20 @@ public class ActionDB implements IAllActionDB {
 
     @Override
     public String addValue(String dicName, String key, String value) throws IOException {
-        return null;
+        try{
+            Session session = connectDB().openSession();
+            session.beginTransaction();
+            if (dicName.equals("first.txt")){
+                session.save(new FirstDictionary(key, value));
+            } else if (dicName.equals("second.txt")) {
+                session.save(new SecondDictionary(key, value));
+            }
+            session.getTransaction().commit();
+            session.close();
+            return "Значение было добавлено!";
+        } catch(Exception e) {
+            return "Введено не корректное значение!";
+        }
+
     }
 }
