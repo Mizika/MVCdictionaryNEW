@@ -7,4 +7,8 @@ public interface IAllActionDB {
     List<String> showAllFromDic(String dicName);
 
     String searchByKey(String dicName, String key) throws IOException;
+
+    String removeFromFile(String dicName, String key) throws IOException;
+
+    String addValue(String dicName, String key, String value) throws IOException;
 }

@@ -56,37 +56,36 @@ public class MyController {
         return "searchByKey";
     }
 
-//    @GetMapping("/removeKeyForm")
-//    public String getRemoveKey(){
-//        return "removeKeyForm";
-//    }
-//
-//    @PostMapping("/removeValue")
-//    public String removeFromFileByKey(@RequestParam("keyValue") String keyValue, Model model) throws IOException {
-//        this.keyValue = keyValue;
-//        model.addAttribute("removeV", myServices.removeFromFile(dictionaryName, keyValue));
-//        return "removeValue";
-//    }
-//
-//    @GetMapping("/addKeyForm")
-//    public String getAddKey(){
-//        switch (dictionaryName){
-//            case "first.txt":
-//                return "addKeyForm";
-//            case "second.txt":
-//                return "addkeyFormSecond";
-//        }
-//        return null;
-//
-//    }
-//
-//    @PostMapping("/addValue")
-//    public String addValue(@RequestParam String keyValue, String value, Model model) throws IOException {
-//        this.keyValue = keyValue;
-//        this.value = value;
-//        model.addAttribute("addV", myServices.addValue(dictionaryName, keyValue, value));
-//        return "addValue";
-//    }
+    @GetMapping("/removeKeyForm")
+    public String getRemoveKey(){
+        return "removeKeyForm";
+    }
+
+    @PostMapping("/removeValue")
+    public String removeFromFileByKey(@RequestParam("keyValue") String keyValue, Model model) throws IOException {
+        this.keyValue = keyValue;
+        model.addAttribute("removeV", myServices.removeFromFile(dictionaryName, keyValue));
+        return "removeValue";
+    }
+
+    @GetMapping("/addKeyForm")
+    public String getAddKey(){
+        switch (dictionaryName){
+            case "first.txt":
+                return "addKeyForm";
+            case "second.txt":
+                return "addkeyFormSecond";
+        }
+        return null;
+    }
+
+    @PostMapping("/addValue")
+    public String addValue(@RequestParam String keyValue, String value, Model model) throws IOException {
+        this.keyValue = keyValue;
+        this.value = value;
+        model.addAttribute("addV", myServices.addValue(dictionaryName, keyValue, value));
+        return "addValue";
+    }
 
 
 }

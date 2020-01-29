@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.io.IOException;
 import java.util.List;
@@ -38,6 +39,7 @@ public class ActionDB implements IAllActionDB {
 
     @Override
     public String searchByKey(String dicName, String key) throws IOException {
+        try{
         Session session = connectDB().openSession();
         session.beginTransaction();
         if (dicName.equals("first.txt")){
@@ -49,5 +51,32 @@ public class ActionDB implements IAllActionDB {
         session.getTransaction().commit();
         session.close();
         return resultQuery;
+        } catch(NoResultException e) {
+            return "Значение с данным ключом не существует!";
+        }
+    }
+
+    @Override
+    public String removeFromFile(String dicName, String key) throws IOException {
+        try{
+            Session session = connectDB().openSession();
+            session.beginTransaction();
+            if (dicName.equals("first.txt")){
+                query = session.createQuery("delete FROM FirstDictionary a where a.key = :key").setParameter("key", key);
+            } else if (dicName.equals("second.txt")) {
+                query = session.createQuery("delete FROM SecondDictionary a where a.key = :key").setParameter("key", key);
+            }
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return "Значение было удалено!";
+        } catch(NoResultException e) {
+            return "Значение с данным ключом не существует!";
+        }
+    }
+
+    @Override
+    public String addValue(String dicName, String key, String value) throws IOException {
+        return null;
     }
 }
