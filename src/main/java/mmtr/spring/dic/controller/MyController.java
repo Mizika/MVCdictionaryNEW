@@ -40,7 +40,7 @@ public class MyController {
     }
 
     @GetMapping("/showAll")
-    public void getShowAll(Model model) {
+    public void getShowAll(Model model) throws Exception {
         model.addAttribute("records", myServices.showAllFromDic(dictionaryName));
         }
 

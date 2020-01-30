@@ -1,6 +1,7 @@
 package mmtr.spring.dic.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Entity
@@ -11,7 +12,7 @@ public class SecondDictionary {
     @Column(name = "id")
     private int id;
 
-
+    @NotBlank
     @Column(name = "key")
     private String key;
 

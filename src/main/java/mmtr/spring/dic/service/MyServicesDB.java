@@ -16,7 +16,7 @@ public class MyServicesDB implements IAllActionDB {
         this.actionDB = actionDB;
     }
 
-    public List<String> showAllFromDic(String dicName){
+    public List<?> showAllFromDic(String dicName) throws Exception {
         return actionDB.showAllFromDic(dicName);
     }
 

@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,19 +27,46 @@ public class ActionDB implements IAllActionDB {
         return sessionFactory;
     }
 
-    @Override
-    public List<String> showAllFromDic(String dicName) {
+    public static List<FirstDictionary> FirstDic(){
+        List<FirstDictionary> data;
         Session session = connectDB().openSession();
         session.beginTransaction();
-        if (dicName.equals("first.txt")){
-            query = session.createQuery("SELECT new FirstDictionary (key, value) from FirstDictionary");
-        } else if (dicName.equals("second.txt")) {
-            query = session.createQuery("SELECT new SecondDictionary (key, value) from SecondDictionary");
-        }
-        List<String> resultList = query.getResultList();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<FirstDictionary> query = builder.createQuery(FirstDictionary.class);
+        Root<FirstDictionary> root = query.from(FirstDictionary.class);
+        query.select(root);
+        org.hibernate.query.Query<FirstDictionary> q = session.createQuery(query);
+        data = q.getResultList();
         session.getTransaction().commit();
         session.close();
-        return resultList;
+        return data;
+    }
+
+    public static List<SecondDictionary> SecondDic(){
+        List<SecondDictionary> data;
+        Session session = connectDB().openSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<SecondDictionary> query = builder.createQuery(SecondDictionary.class);
+        Root<SecondDictionary> root = query.from(SecondDictionary.class);
+        query.select(root);
+        org.hibernate.query.Query<SecondDictionary> q = session.createQuery(query);
+        data = q.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return data;
+    }
+
+    @Override
+    public List<?> showAllFromDic(String dicName) throws Exception {
+        if (dicName.equals("first.txt")){
+            return FirstDic();
+        } else if (dicName.equals("second.txt")) {
+            return SecondDic();
+        } else {
+            throw new Exception("Something bad happened.");
+        }
+
     }
 
     @Override

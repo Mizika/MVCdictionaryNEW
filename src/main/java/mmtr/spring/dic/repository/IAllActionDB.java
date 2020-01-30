@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IAllActionDB {
-    List<String> showAllFromDic(String dicName);
+    List<?> showAllFromDic(String dicName) throws Exception;
 
     String searchByKey(String dicName, String key) throws IOException;
 
