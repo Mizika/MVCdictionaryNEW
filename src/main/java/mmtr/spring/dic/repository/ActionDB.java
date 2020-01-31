@@ -27,7 +27,7 @@ public class ActionDB implements IAllActionDB {
         return sessionFactory;
     }
 
-    public static List<FirstDictionary> FirstDic(){
+    private static List<FirstDictionary> FirstDic(){
         List<FirstDictionary> data;
         Session session = connectDB().openSession();
         session.beginTransaction();
@@ -42,7 +42,7 @@ public class ActionDB implements IAllActionDB {
         return data;
     }
 
-    public static List<SecondDictionary> SecondDic(){
+    private static List<SecondDictionary> SecondDic(){
         List<SecondDictionary> data;
         Session session = connectDB().openSession();
         session.beginTransaction();
