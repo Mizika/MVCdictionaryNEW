@@ -11,4 +11,6 @@ public interface IAllActionDB {
     String removeFromFile(String dicName, String key) throws IOException;
 
     String addValue(String dicName, String key, String value) throws IOException;
+
+    String generateData();
 }

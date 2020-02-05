@@ -39,6 +39,12 @@ public class MyController {
         return "menu";
     }
 
+    @GetMapping("/genData")
+    public String genData(Model model) {
+        model.addAttribute("generation", myServices.generateData());
+        return "genData";
+    }
+
     @GetMapping("/showAll")
     public void getShowAll(Model model) throws Exception {
         model.addAttribute("records", myServices.showAllFromDic(dictionaryName));

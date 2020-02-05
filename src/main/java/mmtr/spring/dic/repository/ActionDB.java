@@ -57,6 +57,7 @@ public class ActionDB implements IAllActionDB {
         return data;
     }
 
+
     @Override
     public List<?> showAllFromDic(String dicName) throws Exception {
         if (dicName.equals("first.txt")){
@@ -124,5 +125,11 @@ public class ActionDB implements IAllActionDB {
             return "Введено не корректное значение!";
         }
 
+    }
+
+    @Override
+    public String generateData() {
+        GenerationDataDB.generateFirstTable();
+        return null;
     }
 }

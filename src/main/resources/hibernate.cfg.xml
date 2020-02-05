@@ -10,6 +10,7 @@
     <property name="hibernate.connection.password">12345</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
     <property name="show_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="mmtr.spring.dic.model.FirstDictionary"></mapping>
     <mapping class="mmtr.spring.dic.model.SecondDictionary"></mapping>
   </session-factory>

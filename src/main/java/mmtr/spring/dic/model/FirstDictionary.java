@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "first" )
+@Table(name = "first", schema = "public" )
 public class FirstDictionary {
 
     @Id

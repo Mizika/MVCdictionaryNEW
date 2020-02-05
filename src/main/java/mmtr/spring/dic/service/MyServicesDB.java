@@ -32,4 +32,10 @@ public class MyServicesDB implements IAllActionDB {
     public String addValue(String dicName, String key, String value) throws IOException {
         return actionDB.addValue(dicName, key, value);
     }
+
+    @Override
+    public String generateData() {
+        actionDB.generateData();
+        return null;
+    }
 }
