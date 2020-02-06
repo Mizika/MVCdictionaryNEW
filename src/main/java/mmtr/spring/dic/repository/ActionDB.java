@@ -130,6 +130,7 @@ public class ActionDB implements IAllActionDB {
     @Override
     public String generateData() {
         GenerationDataDB.generateFirstTable();
+        GenerationDataDB.generateSecondTable();
         return null;
     }
 }

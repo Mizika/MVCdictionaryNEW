@@ -2,6 +2,7 @@ package mmtr.spring.dic.repository;
 
 import com.github.javafaker.Faker;
 import mmtr.spring.dic.model.FirstDictionary;
+import mmtr.spring.dic.model.SecondDictionary;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -29,7 +30,7 @@ public class GenerationDataDB {
             String firstName = faker.name().firstName();
             fileReg = letters.matcher(firstName);
             if (fileReg.matches()) {
-                int randN = rand.nextInt(1000);
+                int randN = rand.nextInt(10000);
                 String randNub = String.valueOf(randN);
                 session.save(new FirstDictionary(randNub, firstName));
                 i++;
@@ -38,4 +39,31 @@ public class GenerationDataDB {
         session.getTransaction().commit();
         session.close();
     }
+
+    public static void generateSecondTable() {
+        Session session = connectDB().openSession();
+        session.beginTransaction();
+        Random rand = new Random();
+        Faker faker = new Faker();
+        Pattern number = Pattern.compile("\\d{5}");
+        Pattern letters = Pattern.compile("\\D{2}");
+        Matcher fileReg;
+        for (int i = 0; i < 5;) {
+            int randN = rand.nextInt(1000000);
+            String randNub = String.valueOf(randN);
+            fileReg = number.matcher(randNub);
+            if (fileReg.matches()) {
+                String firstName = faker.name().firstName();
+                fileReg = letters.matcher(firstName);
+                if (fileReg.matches()) {
+                    session.save(new SecondDictionary(firstName, randNub));
+                    i++;
+                }
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+    }
+
+
 }
